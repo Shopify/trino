@@ -6,15 +6,16 @@ _build_jar() {
 }
 
 _publish_jar() {
+  local version="$1"
   package_cloud push --url https://packages.shopify.io/ \
-    --coordinates com.shopify.data.prestosql:presto-server:324 \
+    --coordinates com.shopify.data.prestosql:presto-server:$version \
     shopify/public/java/1.8 \
-    presto-server/target/presto-server-324-SNAPSHOT.tar.gz
+    presto-server/target/presto-server-$version-SNAPSHOT.tar.gz
 
   package_cloud push --url https://packages.shopify.io/ \
-    --coordinates com.shopify.data.prestosql:presto-benchmark-driver:324 \
+    --coordinates com.shopify.data.prestosql:presto-benchmark-driver:$version \
     shopify/public/java/1.8 \
-    presto-benchmark-driver/target/presto-benchmark-driver-324-SNAPSHOT.tar.gz
+    presto-benchmark-driver/target/presto-benchmark-driver-$version-SNAPSHOT.tar.gz
 }
 
 main() {
